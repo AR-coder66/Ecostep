@@ -1,6 +1,6 @@
 // Change these placeholders to match your real credentials from Supabase API dashboard!
 const SUPABASE_URL = "https://cjojqgdefddztfpzyizx.supabase.co"; 
-const SUPABASE_ANON_KEY = "YOUR_ACTUAL_LONG_ANON_PUBLIC_KEY";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqb2pxZ2RlZmRkenRmcHp5aXp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMjAyMTAsImV4cCI6MjA5NDg5NjIxMH0._VMv4TMhQCTAhEnObCjHrtLb_BUi6whgFWpVil0naRU";
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
