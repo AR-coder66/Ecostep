@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jute Biomaterials | EcoStep Insights</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="leafCanvas"></canvas>
+
+    <header>
+        <nav>
+            <div class="logo">🌱 EcoStep</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="article1.html">Jute Architecture</a></li>
+                <li><a href="article2.html">Indoor Botany</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="card" style="padding: 0; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&w=1100&q=80" alt="Raw natural golden jute fiber packaging stacks" style="width:100%; height:350px; object-fit:cover;">
+            
+            <div style="padding: 40px;">
+                <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Replacing Synthetics with Golden Jute Fibers</h1>
+                <div style="color:var(--primary-color); font-weight:700; margin-bottom:25px; text-transform:uppercase; letter-spacing:1px;">Material Science Case Study</div>
+                
+                <p>Synthetic low-density polyethylene carrier bags take over 400 cycles to decompose in marine conditions. Transitioning your material usage loop to *Corchorus capsularis* (Natural Jute) introduces a complete bio-degradable solution vector.</p>
+                
+                <div class="media-grid">
+                    <div>
+                        <h3 style="margin-top:0; color:var(--primary-color);">High Tensile Structural Yield</h3>
+                        <p>Jute fibers exhibit exceptional structural tensile strength matrix ratings, making them ideal replacements for plastic shipping wraps, grain bags, and retail packaging structures.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517142089942-ba376ce32a2e?auto=format&fit=crop&w=500&q=80" class="showcase-img" alt="Woven biodegradable textile configuration">
+                </div>
+
+                <p class="emphasis-text">"By substituting synthetics with native vegetable fibers, consumers intercept linear waste loops completely at point-of-sale."</p>
+
+                <div style="margin-top: 40px;">
+                    <a href="index.html" class="btn">← Return to Main Dashboard</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <button id="chatToggleBtn">💬</button>
+    <div id="chatWidget">
+        <div class="chat-header">
+            <span>EcoStep Support Bot</span>
+            <span id="chatCloseBtn" style="cursor: pointer; padding: 5px 10px; background: rgba(0,0,0,0.2); border-radius: 4px;">✕ Close</span>
+        </div>
+        <div class="chat-logs" id="chatLogs"><div class="msg bot">Hello! Ask me about "Jute" or "Plastic".</div></div>
+        <div class="chat-input-area"><input type="text" id="chatInputField" placeholder="Ask away..."><button id="chatSendBtn" class="btn" style="padding:10px 15px;">Send</button></div>
+    </div>
+
+    <script src="chatbot.js"></script>
+    <script>
+        const canvas = document.getElementById('leafCanvas'); const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth; let height = canvas.height = window.innerHeight;
+        const leafCount = 12; const leaves = [];
+        for (let i = 0; i < leafCount; i++) { leaves.push({ x: Math.random() * width, y: Math.random() * height, r: Math.random() * 9 + 5, speedX: Math.random() * 0.8 - 0.4, speedY: Math.random() * 0.8 + 0.6, rotation: Math.random() * 360, rotationSpeed: Math.random() * 1 - 0.5 }); }
+        function animate() { ctx.clearRect(0, 0, width, height); ctx.fillStyle = 'rgba(142, 189, 110, 0.15)'; leaves.forEach(l => { ctx.save(); ctx.translate(l.x, l.y); ctx.rotate(l.rotation * Math.PI / 180); ctx.beginPath(); ctx.ellipse(0, 0, l.r, l.r / 2, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore(); l.y += l.speedY; l.x += l.speedX; l.rotation += l.rotationSpeed; if (l.y > height) { l.y = -10; l.x = Math.random() * width; } }); requestAnimationFrame(animate); } animate();
+    </script>
+</body>
+</html>

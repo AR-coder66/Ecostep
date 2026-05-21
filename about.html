@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | EcoStep</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="leafCanvas"></canvas>
+
+    <header>
+        <nav>
+            <div class="logo">🌱 EcoStep</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="article1.html">Jute Architecture</a></li>
+                <li><a href="article2.html">Indoor Botany</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" style="margin-top: 40px; padding: 20px;">
+        <section class="card" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+            <h2>Connect with Us</h2>
+            <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6;">
+                Have questions regarding structural metrics or our platform parameters? Drop your email below to log an entry footprint directly into our cloud tracks.
+            </p>
+
+            <form class="form-group" id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" id="formName" placeholder="Your Name" class="form-input" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
+                <input type="email" id="formEmail" placeholder="Your Email Address" class="form-input" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
+                <textarea id="formMessage" placeholder="Write your context parameters or queries here..." rows="5" class="form-input" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; resize: vertical;"></textarea>
+                <button type="submit" class="btn" style="align-self: flex-start; padding: 12px 24px; background: var(--primary-color); border: none; border-radius: 6px; color: #fff; font-weight: 600; cursor: pointer;">Send Message Handshake</button>
+            </form>
+
+            <div id="formStatusMessage" style="margin-top: 5px; font-weight: 600; font-size: 0.95rem;"></div>
+        </section>
+    </main>
+
+    <button id="chatToggleBtn">💬</button>
+    <div id="chatWidget">
+        <div class="chat-header">
+            <span>EcoStep Support Bot</span>
+            <span id="chatCloseBtn" style="cursor: pointer; padding: 5px 10px; background: rgba(0,0,0,0.2); border-radius: 4px;">✕ Close</span>
+        </div>
+        <div class="chat-logs" id="chatLogs"><div class="msg bot">Hello! Ask me about "Jute" or "Gardening".</div></div>
+        <div class="chat-input-area"><input type="text" id="chatInputField" placeholder="Ask away..."><button id="chatSendBtn" class="btn" style="padding:10px 15px;">Send</button></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="form-handler.js"></script>
+    <script src="chatbot.js"></script>
+    <script>
+        const canvas = document.getElementById('leafCanvas'); const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth; let height = canvas.height = window.innerHeight;
+        const leafCount = 12; const leaves = [];
+        for (let i = 0; i < leafCount; i++) { leaves.push({ x: Math.random() * width, y: Math.random() * height, r: Math.random() * 9 + 5, speedX: Math.random() * 0.8 - 0.4, speedY: Math.random() * 0.8 + 0.6, rotation: Math.random() * 360, rotationSpeed: Math.random() * 1 - 0.5 }); }
+        function animate() { ctx.clearRect(0, 0, width, height); ctx.fillStyle = 'rgba(142, 189, 110, 0.15)'; leaves.forEach(l => { ctx.save(); ctx.translate(l.x, l.y); ctx.rotate(l.rotation * Math.PI / 180); ctx.beginPath(); ctx.ellipse(0, 0, l.r, l.r / 2, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore(); l.y += l.speedY; l.x += l.speedX; l.rotation += l.rotationSpeed; if (l.y > height) { l.y = -10; l.x = Math.random() * width; } }); requestAnimationFrame(animate); } animate();
+    </script>
+</body>
+</html>

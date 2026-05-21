@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indoor Gardening | EcoStep Insights</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="leafCanvas"></canvas>
+
+    <header>
+        <nav>
+            <div class="logo">🌱 EcoStep</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="article1.html">Jute Architecture</a></li>
+                <li><a href="article2.html">Indoor Botany</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="card" style="padding: 0; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=1100&q=80" alt="Lush indoor collection of plants on a window shelf" style="width:100%; height:350px; object-fit:cover;">
+            
+            <div style="padding: 40px;">
+                <h1 style="font-size: 2.5rem; margin-bottom: 20px;">The Joy and Science of Indoor Gardening</h1>
+                <div style="color:var(--primary-color); font-weight:700; margin-bottom:20px; text-transform:uppercase; letter-spacing:1px;">Urban Botany Case Study</div>
+                
+                <p>Integrating biological life support vectors inside dense urban living quarters provides quantifiable improvements to spatial atmospheric chemistry as well as focus optimization layers.</p>
+                
+                <div class="media-grid">
+                    <div class="responsive-video">
+                       <iframe width="560" height="315" src="https://www.youtube.com/embed/pYNmrnf45Xo?si=5HTutYP3BTM92COf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <img src="plantcuttingtubes.png" class="showcase-img" alt="Plant cutting propagation tubes">
+                </div>
+
+                <h3 style="color:var(--primary-color); margin-top:30px; margin-bottom:10px;">1. Spatial Air Purification Matrix</h3>
+                <p>Botany lines like *Sansevieria trifasciata* (Snake Plant) serve as highly resilient structural bio-filters, absorbing common industrial airborne compounds and steadily balancing oxygen cycles inside standard concrete rooms.</p>
+                
+                <h3 style="color:var(--primary-color); margin-top:20px; margin-bottom:10px;">2. Cognitive Recovery Baseline</h3>
+                <p>Managing indoor plant life establishes a calming baseline routine that drops standard operational stress indices and enhances high-level structural problem-solving endurance.</p>
+
+                <p class="emphasis-text">"Begin your implementation with low-moisture succulents to establish clean operational checks!"</p>
+
+                <div style="margin-top: 40px;">
+                    <a href="index.html" class="btn">← Return to Main Dashboard</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <button id="chatToggleBtn">💬</button>
+    <div id="chatWidget">
+        <div class="chat-header">
+            <span>EcoStep Support Bot</span>
+            <span id="chatCloseBtn" style="cursor: pointer; padding: 5px 10px; background: rgba(0,0,0,0.2); border-radius: 4px;">✕ Close</span>
+        </div>
+        <div class="chat-logs" id="chatLogs"><div class="msg bot">Hello! Ask me about "Gardening" or "Air Quality".</div></div>
+        <div class="chat-input-area"><input type="text" id="chatInputField" placeholder="Ask away..."><button id="chatSendBtn" class="btn" style="padding:10px 15px;">Send</button></div>
+    </div>
+
+    <script src="chatbot.js"></script>
+    <script>
+        const canvas = document.getElementById('leafCanvas'); const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth; let height = canvas.height = window.innerHeight;
+        const leafCount = 12; const leaves = [];
+        for (let i = 0; i < leafCount; i++) { leaves.push({ x: Math.random() * width, y: Math.random() * height, r: Math.random() * 9 + 5, speedX: Math.random() * 0.8 - 0.4, speedY: Math.random() * 0.8 + 0.6, rotation: Math.random() * 360, rotationSpeed: Math.random() * 1 - 0.5 }); }
+        function animate() { ctx.clearRect(0, 0, width, height); ctx.fillStyle = 'rgba(142, 189, 110, 0.15)'; leaves.forEach(l => { ctx.save(); ctx.translate(l.x, l.y); ctx.rotate(l.rotation * Math.PI / 180); ctx.beginPath(); ctx.ellipse(0, 0, l.r, l.r / 2, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore(); l.y += l.speedY; l.x += l.speedX; l.rotation += l.rotationSpeed; if (l.y > height) { l.y = -10; l.x = Math.random() * width; } }); requestAnimationFrame(animate); } animate();
+    </script>
+</body>
+</html>
